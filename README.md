@@ -4,10 +4,8 @@ This is my PoC implementation for [CVE-2023-32784](https://cve.mitre.org/cgi-bin
 
 My version is a python port of [@vdohney's PoC](https://github.com/vdohney/keepass-password-dumper) along with a few changes and additional features.
 
-03NOV23 - Added support for decoding unicode characters
-
 ## Changes
-
+03NOV23 - Added support for decoding unicode characters
 #
 
 One change, was to use known strings that can be found within the dump file in order to more accurately jump to the location of the masterkey characters. This results in less false positive characters and greatly reduces the amount of time it takes to scan the file. In the case the the strings aren't found in the dump file, the scan will start from the beginning. This option is enabled by default, but if you want to do a full scan instead, you can use `--full-scan`. For these instances, I've also added a `--skip` flag to help speed up the scan. This is done by offsetting the pointer to jump over the the next 1000 bytes as they typically just contain same character repeated multiple. For example, if the character `●e`, was found in the dump file, it would appear like the following:
