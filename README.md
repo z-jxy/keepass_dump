@@ -4,6 +4,8 @@ This is my PoC implementation for [CVE-2023-32784](https://cve.mitre.org/cgi-bin
 
 My version is a python port of [@vdohney's PoC](https://github.com/vdohney/keepass-password-dumper) along with a few changes and additional features.
 
+03NOV23 - Added support for decoding unicode characters
+
 ## Changes
 
 #
