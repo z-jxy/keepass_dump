@@ -176,7 +176,7 @@ class KeePassDump:
                 candidates = b"<{" + b", ".join([c.to_bytes() for c in val]) + b"}>"
             else:
                 candidates = val
-            data = candidates.decode()
+            data = candidates.decode('unicode_escape') # Updated to support decoding Unicode chararacters
             print(data)
             chars.append(data)
         return "".join(chars)
@@ -362,7 +362,7 @@ class KeePassDump:
 
 
 def isAscii(mem_dump, idx) -> bool:
-    return 0x20 <= mem_dump[idx] and mem_dump[idx] <= 0x7E and mem_dump[idx + 1] == 0x00
+    return 0x20 <= mem_dump[idx] and mem_dump[idx] <= 0xFF and mem_dump[idx + 1] == 0x00 # Updated valid bytes to support Unicode chararacters
 
 
 def isAsterisk(x, y) -> bool:
