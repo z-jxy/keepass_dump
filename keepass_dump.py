@@ -362,7 +362,7 @@ class KeePassDump:
 
 
 def isAscii(mem_dump, idx) -> bool:
-    return 0x20 <= mem_dump[idx] and mem_dump[idx] <= 0x7E and mem_dump[idx + 1] == 0x00
+    return 0x20 <= mem_dump[idx] and mem_dump[idx + 1] == 0x00 # Accepts any printable character followed by a null byte
 
 
 def isAsterisk(x, y) -> bool:
